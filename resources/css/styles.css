@@ -91,22 +91,6 @@ header, section, footer {
     flex: 7;
 }
 
-
-#viewer_container{
-	height: 60vh;
-	width: 100%;
-}
-
-/* ----- HACKS ----- */
-
-.logo__icon {
-	padding-top: 100px;
-}
-
-.navbutton__icon {
-    padding-bottom: 15px;
-}
-
 /* ----- LINKS ----- */
 
 a:link,

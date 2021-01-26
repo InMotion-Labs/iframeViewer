@@ -14,6 +14,10 @@
 			$contents = @file_get_contents('https://api.carscanner.io/api/photosessions/'.$_GET["plate"].'/sections');
 			$contents = @utf8_encode($contents);
 			$sessionObject = @json_decode($contents);
+			
+			$id = $sessionObject->id;
+			$token = "WSRzxkcVYY6wSqk24G25";
+			$url = "https://iframe.carscanner.io/?id=" . $id . "&securitytoken=" . $token;
 		?> 
 		
 	</head>	
@@ -23,7 +27,7 @@
         <header class="demonstration_header">
             <div class="informations">
                 <div class="title">
-                    <h1>Viewer360</h1>
+                    <h1>iframeViewer</h1>
                     <h4>Modern tool, for car inspection.</h4>
                 </div>
                 <div class="plate-select">
@@ -55,7 +59,7 @@
         </header>
             
         <section class="demonstration_container">
-			<iframe src="https://iframe.carscanner.io/?id=703b7812-0eff-48b2-f1ca-08d8a7250d6a&securitytoken=jJPnf23M3eDVdNGyr2e7km7DmphVV9UD" style="width: 100%; height: 100%;"></iframe>
+			<iframe src=<?php echo $url ?> style="width: 100%; height: 100%;"></iframe>
         </section>
         
         <footer class="demonstration_footer">
@@ -66,23 +70,9 @@
             </div>
             <div class="coppyright">
                 <p>
-                    © Copyright 2020, All Rights Reserved. InMotion.
+                    © Copyright 2021, All Rights Reserved. InMotion.
                 </p>
             </div>
         </footer>
-        
-        
-		<script>
-			incsPlayer({
-			container: 'viewer_container',
-			sessionId: <?php echo '\''.$sessionObject->guid.'\'' ?>,
-			logo: 'resources/img/logoSample.svg',
-			navbarLogoWidth: '50px',
-			loaderLogoWidth: '250px',
-			title: 'Loading content,',
-			description: 'Please wait, the requested car will be visible soon...'
-			});
-		</script>
-
 	</body>
 </html>
